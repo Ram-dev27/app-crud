@@ -36,6 +36,7 @@ const BioDataForm = (props) => {
     try {
       const data = await createUser(values);
       console.log(data, "user deleted");
+      alert("User added successfully!");
       formik.resetForm();
       getUserData();
     } catch (err) {
@@ -74,6 +75,7 @@ const BioDataForm = (props) => {
       const data = await updateUser(userId, values);
       setForm(initialValues);
       setEditMode(false);
+      alert("User updated successfully!");
       console.log(data, "user updated");
       getUserData();
     } catch (err) {
@@ -85,6 +87,7 @@ const BioDataForm = (props) => {
     try {
       const data = await deleteUser(userID);
       console.log(data, "user deleted");
+      alert("User deleted successfully!");
       getUserData();
     } catch (err) {
       console.log(err);
@@ -129,6 +132,7 @@ const BioDataForm = (props) => {
             <div className="row">
               <div className="col-6">
                 <input
+                  disabled={viewMode}
                   type="text"
                   className="input-name w-100 mb-0"
                   name="firstName"
@@ -140,6 +144,7 @@ const BioDataForm = (props) => {
               </div>
               <div className="col-6">
                 <input
+                  disabled={viewMode}
                   type="text"
                   className="input-name w-100 mb-0"
                   name="lastName"
@@ -158,6 +163,7 @@ const BioDataForm = (props) => {
               Email <span>*</span>
             </label>
             <input
+              disabled={viewMode}
               type="text"
               className="form-register text"
               name="email"
@@ -175,14 +181,15 @@ const BioDataForm = (props) => {
               Phone Number <span>*</span>
             </label>
             <div className="clearfix"></div>
-              <input
-                type="text"
-                name="phoneNumber"
-                onChange={formik.handleChange}
-                value={formik.values.phoneNumber}
-                className="form-register text"
-                placeholder="Phone number"
-              />
+            <input
+              disabled={viewMode}
+              type="text"
+              name="phoneNumber"
+              onChange={formik.handleChange}
+              value={formik.values.phoneNumber}
+              className="form-register text"
+              placeholder="Phone number"
+            />
             <span className="error text-danger">
               {formik.errors.phoneNumber}
             </span>
@@ -195,6 +202,7 @@ const BioDataForm = (props) => {
               Address <span>*</span>
             </label>
             <input
+              disabled={viewMode}
               type="text"
               className="form-register text"
               name="address1"
@@ -205,6 +213,7 @@ const BioDataForm = (props) => {
             />
             <span className="error text-danger">{formik.errors.address1}</span>
             <input
+              disabled={viewMode}
               type="text"
               className="form-register text mt-4"
               name="address2"
@@ -220,6 +229,7 @@ const BioDataForm = (props) => {
               <div className="row" style={{ width: "102%" }}>
                 <div className="col-6">
                   <input
+                    disabled={viewMode}
                     type="text"
                     className="input-name w-100 mb-0"
                     name="city"
@@ -233,6 +243,7 @@ const BioDataForm = (props) => {
                 </div>
                 <div className="col-6 pr-0">
                   <input
+                    disabled={viewMode}
                     type="text"
                     className="input-name w-100 mb-0"
                     name="state"
@@ -252,6 +263,7 @@ const BioDataForm = (props) => {
               <div className="row" style={{ width: "102%" }}>
                 <div className="col-6">
                   <input
+                    disabled={viewMode}
                     type="text"
                     className="input-name w-100 mb-0"
                     name="zipCode"
@@ -265,6 +277,7 @@ const BioDataForm = (props) => {
                 </div>
                 <div className="col-6 pr-0">
                   <input
+                    disabled={viewMode}
                     type="text"
                     className="input-name w-100 mb-0"
                     name="country"
@@ -284,13 +297,14 @@ const BioDataForm = (props) => {
               Write Your qualification <span>*</span>
             </label>
             <input
+              disabled={viewMode}
               type="text"
               className="form-register text"
               name="qualification"
               value={formik.values.qualification}
               onChange={formik.handleChange}
               id=""
-              placeholder=""
+              placeholder="Qualification"
             />
             <span className="error text-danger">
               {formik.errors.qualification}
@@ -306,15 +320,15 @@ const BioDataForm = (props) => {
               name="comments"
               value={formik.values.comments}
               onChange={formik.handleChange}
+              placeholder="Comments"
             ></textarea>
-             <span className="error text-danger">
-              {formik.errors.comments}
-            </span>
+            <span className="error text-danger">{formik.errors.comments}</span>
           </div>
           <div className="form-group">
             <button
+              disabled={viewMode}
               type="submit"
-              className="btn btn-default submit"
+              className={`btn submit ${editMode ?'btn-warning' : 'btn-primary' }`}
               style={{ width: "97%" }}
             >
               {editMode ? "Update" : "Submit"}

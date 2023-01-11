@@ -14,8 +14,9 @@ export const formSchema = Yup.object().shape({
     .typeError("That doesn't look like a phone number")
     .positive("A phone number can't start with a minus")
     .integer("A phone number can't include a decimal point")
-    .min(8)
-    .required("A phone number is required"),
+    .min(10,"Enter valid phone number")
+    .max(10,"Enter valid phone number")
+    .required("Phone number is required"),
   address1: Yup.string()
     .min(2, "Too Short!")
     .max(50, "Too Long!")
@@ -43,6 +44,6 @@ export const formSchema = Yup.object().shape({
   qualification: Yup.string()
     .min(2, "Too Short!")
     .max(50, "Too Long!")
-    .required("Qualification required"),
+    .required("Qualification is required"),
   comments: Yup.string().min(2, "Too Short!").required("Comments is required"),
 });
