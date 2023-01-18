@@ -118,6 +118,8 @@ const BioDataForm = (props) => {
     },
   });
 
+  console.log(formik.values)
+
   return (
     <div className="container">
       <div className="register col-md-5 col-sm-6">
@@ -140,7 +142,7 @@ const BioDataForm = (props) => {
                   onChange={formik.handleChange}
                   placeholder="First name"
                 />
-                <div className="text-danger">{formik.errors.firstName}</div>
+                <div className="text-danger">{formik.touched.firstName && formik.errors.firstName}</div>
               </div>
               <div className="col-6">
                 <input
@@ -152,7 +154,7 @@ const BioDataForm = (props) => {
                   onChange={formik.handleChange}
                   placeholder="Last name"
                 />
-                <span class="error text-danger">{formik.errors.email}</span>
+                <span class="error text-danger">{formik.touched.lastName && formik.errors.lastName}</span>
               </div>
             </div>
           </div>
@@ -172,7 +174,7 @@ const BioDataForm = (props) => {
               value={formik.values.email}
               onChange={formik.handleChange}
             />
-            <span class="error text-danger">{formik.errors.email}</span>
+            <span class="error text-danger">{formik.touched.email && formik.errors.email}</span>
           </div>
           <div className="clearfix"></div>
 
@@ -191,7 +193,7 @@ const BioDataForm = (props) => {
               placeholder="Phone number"
             />
             <span className="error text-danger">
-              {formik.errors.phoneNumber}
+              {formik.touched.phoneNumber && formik.errors.phoneNumber}
             </span>
           </div>
 
@@ -211,7 +213,7 @@ const BioDataForm = (props) => {
               id=""
               placeholder="Line 1"
             />
-            <span className="error text-danger">{formik.errors.address1}</span>
+            <span className="error text-danger">{formik.touched.address1 && formik.errors.address1}</span>
             <input
               disabled={viewMode}
               type="text"
@@ -222,7 +224,7 @@ const BioDataForm = (props) => {
               id=""
               placeholder="Line 2"
             />
-            <span className="error text-danger">{formik.errors.address1}</span>
+            <span className="error text-danger">{formik.touched.address2 && formik.errors.address2}</span>
           </div>
           <div className="form-group">
             <div className="controls form-inline">
@@ -238,7 +240,7 @@ const BioDataForm = (props) => {
                     placeholder="City"
                   />
                   <span className="error text-danger">
-                    {formik.errors.city}
+                    {formik.touched.city && formik.errors.city}
                   </span>
                 </div>
                 <div className="col-6 pr-0">
@@ -252,7 +254,7 @@ const BioDataForm = (props) => {
                     placeholder="State"
                   />
                   <span className="error text-danger">
-                    {formik.errors.state}
+                    {formik.touched.state && formik.errors.state}
                   </span>
                 </div>
               </div>
@@ -272,7 +274,7 @@ const BioDataForm = (props) => {
                     placeholder="ZipCode"
                   />
                   <span className="error text-danger">
-                    {formik.errors.zipCode}
+                    {formik.touched.zipCode && formik.errors.zipCode}
                   </span>
                 </div>
                 <div className="col-6 pr-0">
@@ -286,7 +288,7 @@ const BioDataForm = (props) => {
                     placeholder="Country"
                   />
                   <span className="error text-danger">
-                    {formik.errors.country}
+                    {formik.touched.country && formik.errors.country}
                   </span>
                 </div>
               </div>
@@ -307,7 +309,7 @@ const BioDataForm = (props) => {
               placeholder="Qualification"
             />
             <span className="error text-danger">
-              {formik.errors.qualification}
+              {formik.touched.qualification && formik.errors.qualification}
             </span>
           </div>
           <div className="clearfix"></div>
@@ -322,7 +324,7 @@ const BioDataForm = (props) => {
               onChange={formik.handleChange}
               placeholder="Comments"
             ></textarea>
-            <span className="error text-danger">{formik.errors.comments}</span>
+            <span className="error text-danger">{formik.touched.comments && formik.errors.comments}</span>
           </div>
           <div className="form-group">
             <button
